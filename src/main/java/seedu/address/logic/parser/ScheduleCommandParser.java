@@ -32,8 +32,8 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
 
         // Parse the appointment details from the input
         try {
-            String dateTime = argMultimap.getValue(PREFIX_DATE_TIME).get();
-            String student = argMultimap.getValue(PREFIX_STUDENT).get();
+            DateTime dateTime = argMultimap.getValue(PREFIX_DATE_TIME).get();
+            Person student = argMultimap.getValue(PREFIX_STUDENT).get();
             // Additional parsing and validation logic can be added here as needed
 
             Appointment appointment = new Appointment(dateTime, student);
