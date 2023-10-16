@@ -1,8 +1,6 @@
 package seedu.address.model.appointment;
 
-import seedu.address.model.appointment.DateTime;
 import seedu.address.model.person.Person;
-import seedu.address.model.appointment.Description;
 
 /**
  * Represents an appointment with a date and time, a student, and a description.
@@ -79,6 +77,12 @@ public class Appointment {
         this.description = description;
     }
 
+    /**
+     * Checks if this appointment is the same as another appointment. Two appointments are considered the same if they have the same description.
+     *
+     * @param otherAppointment The appointment to compare with.
+     * @return {@code true} if the appointments are the same, {@code false} otherwise.
+     */
     public boolean isSameAppointment(Appointment otherAppointment) {
         if (otherAppointment == this) {
             return true;
