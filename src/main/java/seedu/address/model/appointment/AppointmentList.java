@@ -1,4 +1,4 @@
-package seedu.address.model.Appointment;
+package seedu.address.model.appointment;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -10,7 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 
-public class UniqueAppointmentList implements Iterable<Appointment> {
+public class AppointmentList implements Iterable<Appointment> {
 
     private final ObservableList<Appointment> internalList = FXCollections.observableArrayList();
     private final ObservableList<Appointment> internalUnmodifiableList =
@@ -37,6 +37,7 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
         requireAllNonNull(target, editedAppointment);
 
         int index = internalList.indexOf(target);
+        /*
         if (index == -1) {
             throw new AppointmentNotFoundException();
         }
@@ -44,6 +45,7 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
         if (!target.isSameAppointment(editedAppointment) && contains(editedAppointment)) {
             throw new DuplicateAppointmentException();
         }
+         */
 
         internalList.set(index, editedAppointment);
     }
