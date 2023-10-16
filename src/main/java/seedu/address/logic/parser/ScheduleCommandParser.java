@@ -9,7 +9,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.DateTime;
 import seedu.address.model.appointment.Description;
-import seedu.address.model.person.Person
+import seedu.address.model.person.Person;
 import java.util.stream.Stream;
 
 /**
