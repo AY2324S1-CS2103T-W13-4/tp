@@ -1,4 +1,5 @@
 package seedu.address.model.appointment;
+import seedu.address.model.appointment.Appointment;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
