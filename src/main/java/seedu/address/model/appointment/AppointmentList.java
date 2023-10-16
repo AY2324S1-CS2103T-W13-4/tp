@@ -23,7 +23,7 @@ public class AppointmentList implements Iterable<Appointment> {
     }
 
 
-    public void add(appointment toAdd) {
+    public void add(Appointment toAdd) {
         requireNonNull(toAdd);
         /*
         if (contains(toAdd)) {
