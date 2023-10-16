@@ -59,7 +59,7 @@ public class AppointmentList implements Iterable<Appointment> {
         */
     }
 
-    public void setAppointments(UniqueAppointmentList replacement) {
+    public void setAppointments(AppointmentList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
@@ -92,12 +92,12 @@ public class AppointmentList implements Iterable<Appointment> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof UniqueAppointmentList)) {
+        if (!(other instanceof AppointmentList)) {
             return false;
         }
 
-        UniqueAppointmentList otherUniqueAppointmentList = (UniqueAppointmentList) other;
-        return internalList.equals(otherUniqueAppointmentList.internalList);
+        AppointmentList otherAppointmentList = (AppointmentList) other;
+        return internalList.equals(otherAppointmentList.internalList);
     }
 
     @Override
