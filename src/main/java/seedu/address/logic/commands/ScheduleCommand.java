@@ -1,19 +1,19 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STUDENT;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.appointment.Appointment;
 
+import java.util.List;
 
+/**
+ * ScheduleCommand represents a command to schedule a new appointment.
+ */
 public class ScheduleCommand extends Command {
 
     public static final String COMMAND_WORD = "Schedule";
@@ -27,10 +27,9 @@ public class ScheduleCommand extends Command {
             + PREFIX_DATE_TIME + "2023-12-31 16:30 "
             + PREFIX_STUDENT + "John Doe";
 
-
     public static final String MESSAGE_SUCCESS = "New Appointment scheduled: %1$s";
-    public static final String MESSAGE_DUPLICATE_APPOINTMENT = "This appointment already exists in schedule.";
-    public static final String MESSAGE_APPOINTMENT_CLASH = "This appointment clashes with existing appointment.";
+    public static final String MESSAGE_DUPLICATE_APPOINTMENT = "This appointment already exists in the schedule.";
+    public static final String MESSAGE_APPOINTMENT_CLASH = "This appointment clashes with an existing appointment.";
 
     private final Appointment toAdd;
 
@@ -44,7 +43,7 @@ public class ScheduleCommand extends Command {
         requireNonNull(model);
 
         // Check for clashes with existing appointments
-        if (isAppointmentClashing(model.getAllAppointments(), toAdd)) {
+        if (isAppointmentClashing(model.getAppointments(), toAdd)) {
             throw new CommandException(MESSAGE_APPOINTMENT_CLASH);
         }
 
@@ -73,12 +72,12 @@ public class ScheduleCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AddCommand)) {
+        if (!(other instanceof ScheduleCommand)) {
             return false;
         }
 
-        AddCommand otherAddCommand = (AddCommand) other;
-        return toAdd.equals(otherAddCommand.toAdd);
+        ScheduleCommand otherScheduleCommand = (ScheduleCommand) other;
+        return toAdd.equals(otherScheduleCommand.toAdd);
     }
 
     @Override
