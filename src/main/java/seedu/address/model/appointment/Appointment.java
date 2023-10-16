@@ -1,3 +1,5 @@
+package seedu.address.model.appointment;
+
 import seedu.address.model.appointment.DateTime;
 import seedu.address.model.person.Person;
 import seedu.address.model.appointment.Description;
