@@ -78,7 +78,8 @@ public class Appointment {
     }
 
     /**
-     * Checks if this appointment is the same as another appointment. Two appointments are considered the same if they have the same description.
+     * Checks if this appointment is the same as another appointment.
+     * Two appointments are considered the same if they have the same description.
      *
      * @param otherAppointment The appointment to compare with.
      * @return {@code true} if the appointments are the same, {@code false} otherwise.
