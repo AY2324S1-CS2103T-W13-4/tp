@@ -50,11 +50,38 @@ public class Appointment {
     }
 
     /**
+     * Retrieves the description associated with the appointment.
+     *
+     * @return The description associated with the appointment.
+     */
+    public Description getDescription() {
+        return description;
+    }
+
+    /**
      * Sets the student associated with the appointment.
      *
      * @param student The new student for the appointment.
      */
     public void setStudent(Person student) {
         this.student = student;
+    }
+
+    /**
+     * Sets the description associated with the appointment.
+     *
+     * @param description The new description for the appointment.
+     */
+    public void setDescription(Description description) {
+        this.description = description;
+    }
+
+    public boolean isSameAppointment(Appointment otherAppointment) {
+        if (otherAppointment == this) {
+            return true;
+        }
+
+        return otherAppointment != null
+                && otherAppointment.getDescription().equals(getDescription());
     }
 }
