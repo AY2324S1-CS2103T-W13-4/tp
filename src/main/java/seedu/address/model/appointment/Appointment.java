@@ -1,6 +1,7 @@
 import seedu.address.model.appointment.DateTime;
 import seedu.address.model.person.Person;
 import seedu.address.model.appointment.Description;
+import seedu.address.model.appointment.Appointment;
 
 /**
  * Represents an appointment with a date and time, a student, and a description.
