@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STUDENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -20,10 +21,12 @@ public class ScheduleCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Schedules a new appointment. "
             + "Parameters: "
+            + PREFIX_DESCRIPTION + "DESCRIPTION "
             + PREFIX_DATE_TIME + "DATETIME "
             + PREFIX_STUDENT + "STUDENT\n"
             + "Example: "
             + COMMAND_WORD + " "
+            + PREFIX_DESCRIPTION + "First Session "
             + PREFIX_DATE_TIME + "2023-12-31 16:30 "
             + PREFIX_STUDENT + "John Doe";
 
