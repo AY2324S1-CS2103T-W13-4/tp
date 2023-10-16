@@ -1,4 +1,5 @@
-import seedu.address.model.appointment.DateTime;
+package seedu.address.model.appointment;
+
 import seedu.address.model.person.Person;
 
 /**
@@ -50,11 +51,45 @@ public class Appointment {
     }
 
     /**
+     * Retrieves the description associated with the appointment.
+     *
+     * @return The description associated with the appointment.
+     */
+    public Description getDescription() {
+        return description;
+    }
+
+    /**
      * Sets the student associated with the appointment.
      *
      * @param student The new student for the appointment.
      */
     public void setStudent(Person student) {
         this.student = student;
+    }
+
+    /**
+     * Sets the description associated with the appointment.
+     *
+     * @param description The new description for the appointment.
+     */
+    public void setDescription(Description description) {
+        this.description = description;
+    }
+
+    /**
+     * Checks if this appointment is the same as another appointment.
+     * Two appointments are considered the same if they have the same description.
+     *
+     * @param otherAppointment The appointment to compare with.
+     * @return {@code true} if the appointments are the same, {@code false} otherwise.
+     */
+    public boolean isSameAppointment(Appointment otherAppointment) {
+        if (otherAppointment == this) {
+            return true;
+        }
+
+        return otherAppointment != null
+                && otherAppointment.getDescription().equals(getDescription());
     }
 }
