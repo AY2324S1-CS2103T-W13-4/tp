@@ -7,6 +7,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_STUDENT;
 import seedu.address.logic.commands.ScheduleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.appointment.Appointment;
+import seedu.address.model.appointment.DateTime;
+import seedu.address.model.appointment.Description;
+import seedu.address.model.person.Person
 import java.util.stream.Stream;
 
 /**
@@ -34,9 +37,9 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
         try {
             DateTime dateTime = argMultimap.getValue(PREFIX_DATE_TIME).get();
             Person student = argMultimap.getValue(PREFIX_STUDENT).get();
-            // Additional parsing and validation logic can be added here as needed
+            Description description = argMultimap.getValue(PREFIX_DESCRIPTION).get();
 
-            Appointment appointment = new Appointment(dateTime, student);
+            Appointment appointment = new Appointment(dateTime, student, description);
 
             return new ScheduleCommand(appointment);
         } catch (Exception e) {
