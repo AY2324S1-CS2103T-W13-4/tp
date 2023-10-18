@@ -41,7 +41,7 @@ public class CancelCommand extends Command {
         }
 
         Appointment appointmentToDelete = lastShownList.get(targetIndex.getZeroBased());
-        // TODO model.deleteAppointment(appointmentToDelete);
+        model.deleteAppointment(appointmentToDelete);
         return new CommandResult(String.format(MESSAGE_CANCEL_APPOINTMENT_SUCCESS,
                 Messages.format(appointmentToDelete)));
     }
