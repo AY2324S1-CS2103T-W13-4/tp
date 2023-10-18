@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 
 /**
@@ -13,7 +14,7 @@ import seedu.address.model.person.Person;
 public class Appointment {
 
     private final DateTime dateTime;
-    private final Person student;
+    private final Name student;
     private final Description description;
 
     /**
@@ -23,7 +24,7 @@ public class Appointment {
      * @param student     The student associated with the appointment.
      * @param description A description of the appointment.
      */
-    public Appointment(DateTime dateTime, Person student, Description description) {
+    public Appointment(DateTime dateTime, Name student, Description description) {
         requireAllNonNull(dateTime, student, description);
         this.dateTime = dateTime;
         this.student = student;
@@ -42,11 +43,8 @@ public class Appointment {
         return dateTime.getTime();
     }
 
-    public Person getStudent() {
-        return student;
-    }
     public String getName() {
-        return getStudent().getName().fullName;
+        return student.fullName;
     }
 
 

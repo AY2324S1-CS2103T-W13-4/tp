@@ -57,7 +57,7 @@ public class Messages {
      */
     public static String format(Appointment appointment) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(appointment.getStudent())
+        builder.append(appointment.getName())
                 .append("; DateTime: ")
                 .append(appointment.getDateTime())
                 .append("; Description: ")

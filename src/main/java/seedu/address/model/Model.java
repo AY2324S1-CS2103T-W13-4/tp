@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.appointment.Appointment;
+import seedu.address.model.appointment.UniqueAppointmentList;
 import seedu.address.model.person.Person;
 
 /**
@@ -101,4 +102,26 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredAppointmentList(Predicate<Appointment> predicate);
+
+    /**
+     * Retrieves a list of unique appointments.
+     *
+     * @return A data structure or object representing a list of unique appointments.
+     */
+    UniqueAppointmentList getAppointments();
+
+    /**
+     * Checks if a given appointment exists within the list of appointments.
+     *
+     * @param appointment The appointment to check for existence.
+     * @return true if the appointment exists in the list, false otherwise.
+     */
+    boolean hasAppointment(Appointment appointment);
+
+    /**
+     * Adds a new appointment to the list of appointments.
+     *
+     * @param appointment The appointment to be added.
+     */
+    void addAppointment(Appointment appointment);
 }

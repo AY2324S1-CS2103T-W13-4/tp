@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.appointment.Appointment;
+import seedu.address.model.appointment.UniqueAppointmentList;
 import seedu.address.model.person.Person;
 
 /**
@@ -149,6 +150,22 @@ public class ModelManager implements Model {
     public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
         requireNonNull(predicate);
         filteredAppointments.setPredicate(predicate);
+    }
+
+    @Override
+    public UniqueAppointmentList getAppointments() {
+        return (UniqueAppointmentList) this.wellNus.getAppointmentList();
+    }
+
+    @Override
+    public boolean hasAppointment(Appointment appointment) {
+        requireNonNull(appointment);
+        return this.getAppointments().contains(appointment);
+    }
+
+    @Override
+    public void addAppointment(Appointment appointment) {
+        this.getAppointments().add(appointment);
     }
 
     @Override
