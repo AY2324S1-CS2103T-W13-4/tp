@@ -147,4 +147,16 @@ public class UniquePersonList implements Iterable<Person> {
         }
         return true;
     }
+
+    /**
+     * Finds a person in the list using their name.
+     * Returns the person if found, or null if not found.
+     */
+    public Person findPersonByName(Name name) {
+        requireNonNull(name);
+        return internalList.stream()
+                .filter(person -> person.getName().equals(name))
+                .findFirst()
+                .orElse(null);
+    }
 }

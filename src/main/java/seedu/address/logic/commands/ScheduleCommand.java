@@ -2,15 +2,14 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_STUDENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STUDENT;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.appointment.Appointment;
-
-import java.util.List;
+import seedu.address.model.appointment.AppointmentList;
 
 /**
  * ScheduleCommand represents a command to schedule a new appointment.
@@ -36,6 +35,11 @@ public class ScheduleCommand extends Command {
 
     private final Appointment toAdd;
 
+    /**
+     * Creates a new ScheduleCommand to schedule the specified appointment.
+     *
+     * @param appointment The appointment to be scheduled. Must not be null.
+     */
     public ScheduleCommand(Appointment appointment) {
         requireNonNull(appointment);
         toAdd = appointment;
@@ -59,7 +63,7 @@ public class ScheduleCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
-    private boolean isAppointmentClashing(List<Appointment> appointments, Appointment newAppointment) {
+    private boolean isAppointmentClashing(AppointmentList appointments, Appointment newAppointment) {
         for (Appointment existingAppointment : appointments) {
             if (existingAppointment.getDateTime().equals(newAppointment.getDateTime())) {
                 return true;

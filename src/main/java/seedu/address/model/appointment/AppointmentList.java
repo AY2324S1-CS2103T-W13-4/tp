@@ -160,4 +160,8 @@ public class AppointmentList implements Iterable<Appointment> {
         }
         return true;
     }
+
+    public AppointmentList getAppointments() {
+        return this;
+    }
 }

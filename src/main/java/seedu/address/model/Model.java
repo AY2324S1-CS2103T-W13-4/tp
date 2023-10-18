@@ -5,6 +5,8 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.appointment.Appointment;
+import seedu.address.model.appointment.AppointmentList;
 import seedu.address.model.person.Person;
 
 /**
@@ -72,7 +74,8 @@ public interface Model {
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
      * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * The person identity of {@code editedPerson} must not be the same
+     * as another existing person in the address book.
      */
     void setPerson(Person target, Person editedPerson);
 
@@ -84,4 +87,42 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    // Methods related to appointments
+    /**
+     * Returns true if an appointment with the same identity as the provided
+     * appointment exists in the appointment list.
+     *
+     * @param appointment The appointment to check for.
+     * @return True if the appointment exists, false otherwise.
+     */
+    boolean hasAppointment(Appointment appointment);
+
+    /**
+     * Deletes a given appointment from the appointment list.
+     * The appointment must exist in the list.
+     *
+     * @param target The appointment to be deleted.
+     */
+    void deleteAppointment(Appointment target);
+
+    /**
+     * Adds a given appointment to the appointment list.
+     * The appointment must not already exist in the list.
+     *
+     * @param appointment The appointment to be added.
+     */
+    void addAppointment(Appointment appointment);
+
+    /**
+     * Replaces an appointment in the appointment list with an edited version.
+     * The target appointment must exist in the list, and the edited appointment's
+     * identity must not be the same as another existing appointment in the list.
+     *
+     * @param target          The appointment to be replaced.
+     * @param editedAppointment The edited appointment to replace the old one.
+     */
+    void setAppointment(Appointment target, Appointment editedAppointment);
+
+    AppointmentList getAppointments();
 }
