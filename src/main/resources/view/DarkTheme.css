@@ -132,6 +132,14 @@
     -fx-text-fill: #010504;
 }
 
+.column_title {
+    -fx-alignment: center;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 10;
+}
+
 .stack-pane {
      -fx-background-color: derive(#1d1d1d, 20%);
 }
@@ -350,3 +358,4 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
+

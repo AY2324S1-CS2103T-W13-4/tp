@@ -31,6 +31,14 @@ public class DateTime {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public String getDate() {
+        return value.split(" ", 2)[0];
+    }
+
+    public String getTime() {
+        return value.split(" ", 2)[1];
+    }
+
     @Override
     public String toString() {
         return value;

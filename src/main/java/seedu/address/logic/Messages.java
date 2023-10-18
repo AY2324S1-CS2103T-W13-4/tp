@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.person.Person;
 
 /**
@@ -18,6 +19,9 @@ public class Messages {
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
+
+    public static final String MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX =
+            "The appointment index provided is invalid";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
@@ -45,6 +49,19 @@ public class Messages {
                 .append(person.getAddress())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code appointment} for display to the user.
+     */
+    public static String format(Appointment appointment) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(appointment.getStudent())
+                .append("; DateTime: ")
+                .append(appointment.getDateTime())
+                .append("; Description: ")
+                .append(appointment.getDescription());
         return builder.toString();
     }
 

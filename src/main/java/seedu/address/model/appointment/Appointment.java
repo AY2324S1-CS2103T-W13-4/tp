@@ -33,22 +33,25 @@ public class Appointment {
     }
 
     /**
-     * Sets the date and time of the appointment.
-     *
-     * @param dateTime The new date and time for the appointment.
-     */
-    public void setDateTime(DateTime dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    /**
      * Retrieves the student associated with the appointment.
      *
      * @return The student associated with the appointment.
      */
+    public String getDate() {
+        return dateTime.getDate();
+    }
+
+    public String getTime() {
+        return dateTime.getTime();
+    }
+
     public Person getStudent() {
         return student;
     }
+    public String getName() {
+        return getStudent().getName().fullName;
+    }
+
 
     /**
      * Retrieves the description associated with the appointment.

@@ -17,11 +17,15 @@ import java.util.stream.Stream;
  * Parses input arguments and creates a new ScheduleCommand object.
  */
 public class ScheduleCommandParser implements Parser<ScheduleCommand> {
-    private final UniquePersonList uniquePersonList;
+
+    UniquePersonList uniquePersonList;
+    public ScheduleCommandParser() {
+    }
 
     public ScheduleCommandParser(UniquePersonList uniquePersonList) {
         this.uniquePersonList = uniquePersonList;
     }
+
 
     /**
      * Parses the given {@code String} of arguments in the context of the ScheduleCommand
@@ -31,19 +35,19 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
      */
     public ScheduleCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
-                CliSyntax.PREFIX_DATE_TIME, CliSyntax.PREFIX_STUDENT);
+                CliSyntax.PREFIX_DESCRIPTION, CliSyntax.PREFIX_DATE_TIME, CliSyntax.PREFIX_STUDENT);
 
-        if (!arePrefixesPresent(argMultimap, CliSyntax.PREFIX_DATE_TIME,
+        if (!arePrefixesPresent(argMultimap, CliSyntax.PREFIX_DESCRIPTION, CliSyntax.PREFIX_DATE_TIME,
                 CliSyntax.PREFIX_STUDENT) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ScheduleCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(CliSyntax.PREFIX_DATE_TIME, CliSyntax.PREFIX_STUDENT);
+        argMultimap.verifyNoDuplicatePrefixesFor(CliSyntax.PREFIX_DESCRIPTION, CliSyntax.PREFIX_DATE_TIME, CliSyntax.PREFIX_STUDENT);
 
         // Parse the appointment details from the input
         try {
-            DateTime dateTime = new DateTime(argMultimap.getValue(CliSyntax.PREFIX_DATE_TIME).get());
             Description description = new Description(argMultimap.getValue(CliSyntax.PREFIX_DESCRIPTION).get());
+            DateTime dateTime = new DateTime(argMultimap.getValue(CliSyntax.PREFIX_DATE_TIME).get());
             Name studentName = new Name(argMultimap.getValue(CliSyntax.PREFIX_STUDENT).get());
             Person student = uniquePersonList.findPersonByName(studentName);
 

@@ -4,17 +4,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.risklevel.RiskLevel;
 
 /**
- * Jackson-friendly version of {@link Tag}.
+ * Jackson-friendly version of {@link RiskLevel}.
  */
 class JsonAdaptedTag {
 
     private final String tagName;
 
     /**
-     * Constructs a {@code JsonAdaptedTag} with the given {@code tagName}.
+     * Constructs a {@code JsonAdaptedTag} with the given {@code riskLevel}.
      */
     @JsonCreator
     public JsonAdaptedTag(String tagName) {
@@ -24,8 +24,8 @@ class JsonAdaptedTag {
     /**
      * Converts a given {@code Tag} into this class for Jackson use.
      */
-    public JsonAdaptedTag(Tag source) {
-        tagName = source.tagName;
+    public JsonAdaptedTag(RiskLevel source) {
+        tagName = source.riskLevel;
     }
 
     @JsonValue
@@ -38,11 +38,11 @@ class JsonAdaptedTag {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted tag.
      */
-    public Tag toModelType() throws IllegalValueException {
-        if (!Tag.isValidTagName(tagName)) {
-            throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
+    public RiskLevel toModelType() throws IllegalValueException {
+        if (!RiskLevel.isValidRiskLevel(tagName)) {
+            throw new IllegalValueException(RiskLevel.MESSAGE_CONSTRAINTS);
         }
-        return new Tag(tagName);
+        return new RiskLevel(tagName);
     }
 
 }
