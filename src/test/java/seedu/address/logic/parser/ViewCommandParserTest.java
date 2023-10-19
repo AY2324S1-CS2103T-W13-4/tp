@@ -29,9 +29,13 @@ public class ViewCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE);
         // no parameters
         assertParseFailure(parser, "", expectedMessage);
+    }
 
-        // no remark
-        String userInput = " " + PREFIX_CATEGORY + "";
+    @Test
+    public void parse_invalidField_failure() {
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE);
+        String userInput = " " + PREFIX_CATEGORY + "not-a-category";
         assertParseFailure(parser, userInput, expectedMessage);
     }
+
 }

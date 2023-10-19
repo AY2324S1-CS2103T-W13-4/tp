@@ -3,8 +3,9 @@ package seedu.address.model.risklevel;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import java.util.HashSet;
 import java.util.Set;
+
+import seedu.address.model.util.LimitedHashSet;
 
 /**
  * Represents a RiskLevel in the address book.
@@ -12,10 +13,8 @@ import java.util.Set;
  */
 public class RiskLevel {
 
-    public static final String MESSAGE_CONSTRAINTS = "Tags names should be alphanumeric";
-    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
-
-    private static final Set<String> ALLOWED_VALUES = new HashSet<>();
+    public static final String MESSAGE_CONSTRAINTS = "Risk level should be one of the following three: high/medium/low";
+    private static final Set<String> ALLOWED_VALUES = new LimitedHashSet<>(3);
 
     static {
         ALLOWED_VALUES.add("high");
@@ -39,7 +38,8 @@ public class RiskLevel {
      * Returns true if a given string is a valid tag name.
      */
     public static boolean isValidRiskLevel(String test) {
-        return test.matches(VALIDATION_REGEX);
+        requireNonNull(test);
+        return ALLOWED_VALUES.contains(test);
     }
 
     @Override

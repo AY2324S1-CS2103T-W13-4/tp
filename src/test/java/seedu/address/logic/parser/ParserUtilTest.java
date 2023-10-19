@@ -25,14 +25,14 @@ public class ParserUtilTest {
     private static final String INVALID_PHONE = "+651234";
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
-    private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_RISK_LEVEL = "#friend";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
     private static final String VALID_ADDRESS = "123 Main Street #0505";
     private static final String VALID_EMAIL = "rachel@example.com";
-    private static final String VALID_TAG_1 = "friend";
-    private static final String VALID_TAG_2 = "neighbour";
+    private static final String VALID_RISK_LEVEL_1 = "high";
+    private static final String VALID_RISK_LEVEL_2 = "low";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -156,19 +156,19 @@ public class ParserUtilTest {
 
     @Test
     public void parseRiskLevel_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseRiskLevel(INVALID_TAG));
+        assertThrows(ParseException.class, () -> ParserUtil.parseRiskLevel(INVALID_RISK_LEVEL));
     }
 
     @Test
     public void parseRiskLevel_validValueWithoutWhitespace_returnsTag() throws Exception {
-        RiskLevel expectedTag = new RiskLevel(VALID_TAG_1);
-        assertEquals(expectedTag, ParserUtil.parseRiskLevel(VALID_TAG_1));
+        RiskLevel expectedTag = new RiskLevel(VALID_RISK_LEVEL_1);
+        assertEquals(expectedTag, ParserUtil.parseRiskLevel(VALID_RISK_LEVEL_1));
     }
 
     @Test
     public void parseRiskLevel_validValueWithWhitespace_returnsTrimmedTag() throws Exception {
-        String tagWithWhitespace = WHITESPACE + VALID_TAG_1 + WHITESPACE;
-        RiskLevel expectedTag = new RiskLevel(VALID_TAG_1);
+        String tagWithWhitespace = WHITESPACE + VALID_RISK_LEVEL_1 + WHITESPACE;
+        RiskLevel expectedTag = new RiskLevel(VALID_RISK_LEVEL_1);
         assertEquals(expectedTag, ParserUtil.parseRiskLevel(tagWithWhitespace));
     }
 
@@ -180,7 +180,8 @@ public class ParserUtilTest {
 
     @Test
     public void parseRiskLevel_collectionWithInvalidTags_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseRiskLevel(Arrays.asList(VALID_TAG_1, INVALID_TAG)));
+        assertThrows(ParseException.class, () -> ParserUtil.parseRiskLevel(Arrays.asList(
+                                                                            VALID_RISK_LEVEL_1, INVALID_RISK_LEVEL)));
     }
 
     @Test
@@ -190,9 +191,10 @@ public class ParserUtilTest {
 
     @Test
     public void parseRiskLevel_collectionWithValidTags_returnsTagSet() throws Exception {
-        Set<RiskLevel> actualTagSet = ParserUtil.parseRiskLevel(Arrays.asList(VALID_TAG_1, VALID_TAG_2));
+        Set<RiskLevel> actualTagSet = ParserUtil.parseRiskLevel(Arrays.asList(VALID_RISK_LEVEL_1, VALID_RISK_LEVEL_2));
         Set<RiskLevel> expectedTagSet = new HashSet<RiskLevel>(Arrays.asList(
-                                                               new RiskLevel(VALID_TAG_1), new RiskLevel(VALID_TAG_2)));
+                                                               new RiskLevel(VALID_RISK_LEVEL_1),
+                                                               new RiskLevel(VALID_RISK_LEVEL_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
     }
