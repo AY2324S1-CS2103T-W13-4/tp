@@ -713,3 +713,12 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+### Schedule an appointment
+
+1. Dealing with clashes
+   1. Expected: Warning and appointment not added
+2. Multiple High Risk appointments back-to-back
+   1. Expected: Warning but can book appointment
+
+
