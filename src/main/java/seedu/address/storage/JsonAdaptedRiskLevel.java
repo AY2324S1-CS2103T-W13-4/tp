@@ -9,28 +9,28 @@ import seedu.address.model.risklevel.RiskLevel;
 /**
  * Jackson-friendly version of {@link RiskLevel}.
  */
-class JsonAdaptedTag {
+class JsonAdaptedRiskLevel {
 
-    private final String tagName;
+    private final String riskLevel;
 
     /**
      * Constructs a {@code JsonAdaptedTag} with the given {@code riskLevel}.
      */
     @JsonCreator
-    public JsonAdaptedTag(String tagName) {
-        this.tagName = tagName;
+    public JsonAdaptedRiskLevel(String riskLevel) {
+        this.riskLevel = riskLevel;
     }
 
     /**
      * Converts a given {@code Tag} into this class for Jackson use.
      */
-    public JsonAdaptedTag(RiskLevel source) {
-        tagName = source.riskLevel;
+    public JsonAdaptedRiskLevel(RiskLevel source) {
+        riskLevel = source.riskLevel;
     }
 
     @JsonValue
-    public String getTagName() {
-        return tagName;
+    public String getRiskLevel() {
+        return riskLevel;
     }
 
     /**
@@ -39,10 +39,10 @@ class JsonAdaptedTag {
      * @throws IllegalValueException if there were any data constraints violated in the adapted tag.
      */
     public RiskLevel toModelType() throws IllegalValueException {
-        if (!RiskLevel.isValidRiskLevel(tagName)) {
+        if (!RiskLevel.isValidRiskLevel(riskLevel)) {
             throw new IllegalValueException(RiskLevel.MESSAGE_CONSTRAINTS);
         }
-        return new RiskLevel(tagName);
+        return new RiskLevel(riskLevel);
     }
 
 }

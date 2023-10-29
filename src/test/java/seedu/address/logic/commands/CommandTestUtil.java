@@ -8,8 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RISK_LEVEL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -59,8 +59,8 @@ public class CommandTestUtil {
     public static final String PHONE_DESC_BOB = " " + PREFIX_PHONE + VALID_PHONE_BOB;
     public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
-    public static final String RISK_DESC_HIGH = " " + PREFIX_TAG + VALID_RISK_LEVEL_HIGH;
-    public static final String RISK_DESC_LOW = " " + PREFIX_TAG + VALID_RISK_LEVEL_LOW;
+    public static final String RISK_DESC_HIGH = " " + PREFIX_RISK_LEVEL + VALID_RISK_LEVEL_HIGH;
+    public static final String RISK_DESC_LOW = " " + PREFIX_RISK_LEVEL + VALID_RISK_LEVEL_LOW;
 
     public static final String DATE_DESC_AMY = " " + PREFIX_DATE + VALID_DATE_AMY;
     public static final String DATE_DESC_BOB = " " + PREFIX_DATE + VALID_DATE_BOB;
@@ -75,7 +75,8 @@ public class CommandTestUtil {
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
-    public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
+    public static final String INVALID_RISK_LEVEL_DESC = " "
+            + PREFIX_RISK_LEVEL + "dangerous"; // only 'high', 'medium', or 'low' allowed for risk level
     public static final String INVALID_DATE_DESC = " " + PREFIX_DATE
             + "2023-12-31a"; // 'a' not allowed in date
     public static final String INVALID_START_TIME_DESC = " " + PREFIX_START_TIME

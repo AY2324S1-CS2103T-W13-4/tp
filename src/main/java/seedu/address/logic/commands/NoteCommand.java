@@ -68,7 +68,7 @@ public class NoteCommand extends Command {
      */
     private String generateSuccessMessage(Student studentToEdit) {
         String message = !note.value.isEmpty() ? MESSAGE_ADD_NOTE_SUCCESS : MESSAGE_DELETE_NOTE_SUCCESS;
-        return String.format(message, studentToEdit);
+        return String.format(message, Messages.format(studentToEdit));
     }
 
     @Override

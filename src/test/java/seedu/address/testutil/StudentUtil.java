@@ -3,7 +3,7 @@ package seedu.address.testutil;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RISK_LEVEL;
 
 import java.util.Set;
 
@@ -33,7 +33,7 @@ public class StudentUtil {
         sb.append(PREFIX_PHONE + student.getPhone().value + " ");
         sb.append(PREFIX_ADDRESS + student.getAddress().value + " ");
         student.getTags().stream().forEach(
-            s -> sb.append(PREFIX_TAG + s.riskLevel + " ")
+            s -> sb.append(PREFIX_RISK_LEVEL + s.riskLevel + " ")
         );
         return sb.toString();
     }
@@ -49,9 +49,9 @@ public class StudentUtil {
         if (descriptor.getTags().isPresent()) {
             Set<RiskLevel> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {
-                sb.append(PREFIX_TAG);
+                sb.append(PREFIX_RISK_LEVEL);
             } else {
-                tags.forEach(s -> sb.append(PREFIX_TAG).append(s.riskLevel).append(" "));
+                tags.forEach(s -> sb.append(PREFIX_RISK_LEVEL).append(s.riskLevel).append(" "));
             }
         }
         return sb.toString();

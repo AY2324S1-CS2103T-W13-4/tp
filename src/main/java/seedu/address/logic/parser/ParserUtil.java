@@ -3,7 +3,6 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -15,7 +14,9 @@ import seedu.address.model.appointment.Time;
 import seedu.address.model.risklevel.RiskLevel;
 import seedu.address.model.student.Address;
 import seedu.address.model.student.Name;
+import seedu.address.model.student.Note;
 import seedu.address.model.student.Phone;
+import seedu.address.model.util.LimitedHashSet;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -147,10 +148,25 @@ public class ParserUtil {
      */
     public static Set<RiskLevel> parseRiskLevel(Collection<String> tags) throws ParseException {
         requireNonNull(tags);
-        final Set<RiskLevel> tagSet = new HashSet<>();
+        final Set<RiskLevel> tagSet = new LimitedHashSet<>(1);
         for (String tagName : tags) {
             tagSet.add(parseRiskLevel(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String note} into a {@code Note}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code note} is invalid.
+     */
+    public static Note parseNote(String note) throws ParseException {
+        requireNonNull(note);
+        String trimmedNote = note.trim();
+        if (!Note.isValidNote(trimmedNote)) {
+            throw new ParseException(Note.MESSAGE_CONSTRAINTS);
+        }
+        return new Note(trimmedNote);
     }
 }

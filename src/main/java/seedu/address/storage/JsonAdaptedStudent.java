@@ -27,7 +27,7 @@ class JsonAdaptedStudent {
     private final String name;
     private final String phone;
     private final String address;
-    private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final List<JsonAdaptedRiskLevel> tags = new ArrayList<>();
     private final String note;
 
     /**
@@ -36,7 +36,7 @@ class JsonAdaptedStudent {
     @JsonCreator
     public JsonAdaptedStudent(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
                               @JsonProperty("address") String address,
-                              @JsonProperty("tags") List<JsonAdaptedTag> tags,
+                              @JsonProperty("tags") List<JsonAdaptedRiskLevel> tags,
                               @JsonProperty("note") String note) {
         this.name = name;
         this.phone = phone;
@@ -55,7 +55,7 @@ class JsonAdaptedStudent {
         phone = source.getPhone().value;
         address = source.getAddress().value;
         tags.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
+                .map(JsonAdaptedRiskLevel::new)
                 .collect(Collectors.toList()));
         note = source.getNote().value;
     }
@@ -67,7 +67,7 @@ class JsonAdaptedStudent {
      */
     public Student toModelType() throws IllegalValueException {
         final List<RiskLevel> studentRiskLevel = new ArrayList<>();
-        for (JsonAdaptedTag tag : tags) {
+        for (JsonAdaptedRiskLevel tag : tags) {
             studentRiskLevel.add(tag.toModelType());
         }
 

@@ -22,7 +22,9 @@ public class Student {
 
     // Data fields
     private final Address address;
-    private final Set<RiskLevel> riskLevel = new LimitedHashSet<>(3);
+
+    // Each student should only have 1 risk level
+    private final Set<RiskLevel> riskLevel = new LimitedHashSet<>(1);
     private final Note note;
 
     /**

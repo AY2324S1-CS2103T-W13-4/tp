@@ -3,9 +3,8 @@ package seedu.address.model.risklevel;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.HashSet;
 import java.util.Set;
-
-import seedu.address.model.util.LimitedHashSet;
 
 /**
  * Represents a RiskLevel in the address book.
@@ -14,7 +13,7 @@ import seedu.address.model.util.LimitedHashSet;
 public class RiskLevel {
 
     public static final String MESSAGE_CONSTRAINTS = "Risk level should be one of the following three: high/medium/low";
-    private static final Set<String> ALLOWED_VALUES = new LimitedHashSet<>(3);
+    private static final Set<String> ALLOWED_VALUES = new HashSet<>();
 
     static {
         ALLOWED_VALUES.add("high");
@@ -53,8 +52,8 @@ public class RiskLevel {
             return false;
         }
 
-        RiskLevel otherTag = (RiskLevel) other;
-        return riskLevel.equals(otherTag.riskLevel);
+        RiskLevel otherRiskLevel = (RiskLevel) other;
+        return riskLevel.equals(otherRiskLevel.riskLevel);
     }
 
     @Override

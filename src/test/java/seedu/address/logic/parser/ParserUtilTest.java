@@ -164,10 +164,9 @@ public class ParserUtilTest {
 
     @Test
     public void parseRiskLevel_collectionWithValidTags_returnsTagSet() throws Exception {
-        Set<RiskLevel> actualTagSet = ParserUtil.parseRiskLevel(Arrays.asList(VALID_RISK_LEVEL_1, VALID_RISK_LEVEL_2));
+        Set<RiskLevel> actualTagSet = ParserUtil.parseRiskLevel(Arrays.asList(VALID_RISK_LEVEL_1));
         Set<RiskLevel> expectedTagSet = new HashSet<RiskLevel>(Arrays.asList(
-                                                               new RiskLevel(VALID_RISK_LEVEL_1),
-                                                               new RiskLevel(VALID_RISK_LEVEL_2)));
+                                                               new RiskLevel(VALID_RISK_LEVEL_1)));
 
         assertEquals(expectedTagSet, actualTagSet);
     }

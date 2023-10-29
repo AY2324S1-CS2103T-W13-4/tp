@@ -39,7 +39,8 @@ public class NoteCommandTest {
 
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_STUDENT, new Note(editedStudent.getNote().value));
 
-        String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS, editedStudent);
+        String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS,
+                Messages.format(editedStudent));
 
         Model expectedModel = new ModelManager(new WellNus(model.getAddressBook()), new UserPrefs());
         expectedModel.setStudent(firstStudent, editedStudent);
@@ -50,12 +51,13 @@ public class NoteCommandTest {
     @Test
     public void execute_deleteNoteUnfilteredList_success() {
         Student firstStudent = model.getFilteredStudentList().get(INDEX_FIRST_STUDENT.getZeroBased());
-        Student editedStudent = new StudentBuilder(firstStudent).withNote(" ").build();
+        Student editedStudent = new StudentBuilder(firstStudent).withNote("").build();
 
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_STUDENT,
                 new Note(editedStudent.getNote().toString()));
 
-        String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS, editedStudent);
+        String expectedMessage = String.format(NoteCommand.MESSAGE_DELETE_NOTE_SUCCESS,
+                Messages.format(editedStudent));
 
         Model expectedModel = new ModelManager(new WellNus(model.getAddressBook()), new UserPrefs());
         expectedModel.setStudent(firstStudent, editedStudent);
@@ -73,7 +75,8 @@ public class NoteCommandTest {
 
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_STUDENT, new Note(editedStudent.getNote().value));
 
-        String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS, editedStudent);
+        String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS,
+                Messages.format(editedStudent));
 
         Model expectedModel = new ModelManager(new WellNus(model.getAddressBook()), new UserPrefs());
         expectedModel.setStudent(firstStudent, editedStudent);
