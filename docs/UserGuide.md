@@ -98,7 +98,7 @@ Examples:
 
 Deletes an existing student.
 
-Format: `delete <INDEX>`
+Format: `delete INDEX`
 
 **Parameters**:
 1. Appointment Index
@@ -110,17 +110,17 @@ Format: `delete <INDEX>`
 
 #### 2.2.5 Finding Students by Name: `find`
 
-### 2.2.6 Assigning risk status to student (to be implemented)
+#### 2.2.6 Assigning risk status to student (to be implemented)
 
-Tags a student with a risk level based on their current mental health status, categorizing them as high, medium, low tag_student <index> <RISK_LEVEL>
+Tags a student with 
    
-Format: `tag_student <INDEX> <RISK_LEVEL>`
+Format: `tag INDEX r/RISK_LEVEL`
    
 **Parameters**:
 1. Student Index
-    - The index of an existing student in the system
+    - Index must be an integer more than 0
 2. RISK LEVEL 
-   - One of the following HIGH, MEDIUM, LOW
+   - One of the following `high`, `medium`, `low`
 
 ### 2.3 Appointment Commands
 
@@ -144,11 +144,11 @@ Examples:
 
 Cancels an existing appointment.
 
-Format: `cancel <INDEX>`
+Format: `cancel INDEX`
 
 **Parameters**:
 1. Appointment Index
-    - Numerical characters only
+    - Index must be an integer more than 0
 
 Examples:
 * `cancel 2`
@@ -213,7 +213,7 @@ _Details coming soon ..._
 | [Edit Student]()           |                                                                                                                        |
 | [View Students]()          |                                                                                                                        |
 | [Find Students]()          |                                                                                                                        |
-| [Assign Risk to Student]() | `tag_student INDEX RISK_LEVEL`<br> e.g.,`tag_student 4 HIGH`                                                           |
+| [Assign Risk to Student]() | `tag INDEX r/RISK_LEVEL`<br> e.g.,`tag 4 r/high`                                                                       |
 | [Schedule Appointment]()   | `schedule d/DESCRIPTION s/DATETIME n/NAME_OF_STUDENT`<br> e.g., `schedule d/monthly check-up s/2023-12-31 16:30 n/Jon` |
 | [Cancel Appointment]()     | `cancel INDEX`<br> e.g., `cancel 3`                                                                                    |
 | [View Appointments]()      | `view g/CATEGORY` <br> e.g., `view g/appointments`                                                                     |
