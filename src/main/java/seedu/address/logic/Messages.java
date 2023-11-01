@@ -26,6 +26,9 @@ public class Messages {
     public static final String MESSAGE_INVALID_START_END_TIME =
             "Start time must be before end time";
 
+    public static final String MESSAGE_INVALID_STUDENT =
+            "Student must be in the list";
+
     /**
      * Returns an error message indicating the duplicate prefixes.
      */

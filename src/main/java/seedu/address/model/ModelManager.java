@@ -24,6 +24,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Appointment> filteredAppointments;
     private final FilteredList<Student> filteredStudents;
+    private static ModelManager instance;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -37,6 +38,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         this.filteredStudents = new FilteredList<>(this.wellNus.getStudentList());
         this.filteredAppointments = new FilteredList<>(this.wellNus.getAppointmentList());
+        this.instance = this;
     }
 
     public ModelManager() {
@@ -49,6 +51,14 @@ public class ModelManager implements Model {
     public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
         requireNonNull(userPrefs);
         this.userPrefs.resetData(userPrefs);
+    }
+
+    public static ModelManager getInstance() {
+        if (instance == null) {
+            // Create a new instance if it doesn't exist
+            instance = new ModelManager();
+        }
+        return instance;
     }
 
     @Override

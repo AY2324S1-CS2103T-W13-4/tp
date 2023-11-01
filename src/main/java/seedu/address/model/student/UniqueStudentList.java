@@ -146,4 +146,13 @@ public class UniqueStudentList implements Iterable<Student> {
         }
         return true;
     }
+
+    /**
+     * Returns true if the list contains a student with the given name.
+     */
+    public boolean findStudentByName(Name studentName) {
+        requireNonNull(studentName);
+        return internalList.stream()
+                .anyMatch(student -> student.getName().equals(studentName));
+    }
 }

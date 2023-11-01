@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_START_END_TIME;
+import static seedu.address.logic.Messages.*;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
@@ -10,19 +9,30 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
 import java.util.stream.Stream;
 
+import javafx.collections.ObservableList;
 import seedu.address.logic.commands.ScheduleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ModelManager;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.Date;
 import seedu.address.model.appointment.Description;
 import seedu.address.model.appointment.Time;
 import seedu.address.model.appointment.exceptions.InvalidStartEndTimeException;
 import seedu.address.model.student.Name;
+import seedu.address.model.student.Student;
 
 /**
  * Parses input arguments and creates a new ScheduleCommand object.
  */
 public class ScheduleCommandParser implements Parser<ScheduleCommand> {
+
+    private final ObservableList<Student> uniqueStudentList;
+    private final ModelManager model;
+
+    public ScheduleCommandParser() {
+        this.model = ModelManager.getInstance();
+        uniqueStudentList = model.getFilteredStudentList();
+    }
 
     /**
      * Parses the given {@code String} of arguments in the context of the ScheduleCommand
@@ -49,6 +59,10 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
         Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
         Appointment appointment;
 
+        if (uniqueStudentList == null || !findStudentByName(studentName)) {
+            throw new ParseException(MESSAGE_INVALID_STUDENT);
+        }
+
         try {
             appointment = new Appointment(date, startTime, endTime, studentName, description);
         } catch (InvalidStartEndTimeException e) {
@@ -58,6 +72,16 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
         return new ScheduleCommand(appointment);
     }
 
+    /**
+     * Returns true if a student with the given name exists in the list.
+     *
+     * @param name The name of the student to search for.
+     * @return True if a student with the given name exists, false otherwise.
+     */
+    public boolean findStudentByName(Name name) {
+        // Assuming your UniqueStudentList contains a list of Student objects
+        return uniqueStudentList.stream().anyMatch(student -> student.getName().equals(name));
+    }
 
     /**
      * Returns true if none of the prefixes contain empty {@code Optional} values in the given
