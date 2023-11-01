@@ -1,14 +1,13 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.Messages.*;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_START_END_TIME;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_STUDENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_START_END_TIME;
-
 
 import java.util.stream.Stream;
 
@@ -32,6 +31,10 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
     private final ObservableList<Student> uniqueStudentList;
     private final ModelManager model;
 
+    /**
+     * Initializes a ScheduleCommandParser with a reference to the application's Model.
+     * The Model is used to retrieve the filtered student list for validation during parsing.
+     */
     public ScheduleCommandParser() {
         this.model = ModelManager.getInstance();
         uniqueStudentList = model.getFilteredStudentList();

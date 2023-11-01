@@ -20,11 +20,12 @@ import seedu.address.model.student.Student;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
+    private static ModelManager instance;
     private final WellNus wellNus;
     private final UserPrefs userPrefs;
     private final FilteredList<Appointment> filteredAppointments;
     private final FilteredList<Student> filteredStudents;
-    private static ModelManager instance;
+
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
