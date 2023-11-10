@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
@@ -48,6 +49,7 @@ public class ScheduleCommand extends Command {
     public static final String MESSAGE_NO_STUDENT_FOR_APPOINTMENT = "No such student exists for this appointment";
     public static final String MESSAGE_DATE_IN_THE_PAST = "Appointment date and time should be in the future";
     public static final String MESSAGE_DATE_EXCEED_ONE_YEAR = "Appointment can only be scheduled within a year";
+    public static final String MESSAGE_DATE_DOES_NOT_EXIST = "Date does not exist. Enter a valid date.";
 
     private final Appointment toAdd;
 
